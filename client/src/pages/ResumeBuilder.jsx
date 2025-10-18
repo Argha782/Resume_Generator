@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { dummyResumeData } from "../assets/assets";
+import { dummyResumeData } from "../assets/assets.js";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeftIcon,
@@ -12,27 +12,29 @@ import {
   User,
 } from "lucide-react";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import ResumePreview from "../components/ResumePreview";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
   const [resumeData, setResumeData] = useState({
     _id: "",
     title: "",
-    professional_info: {},
+    personal_info: {},
     professional_summary: "",
     experience: [],
     education: [],
-    projects: [],
+    project: [],
+    skills: [],  
     template: "classic",
     accent_color: "#3B82F6",
     public: false,
   });
 
   const loadExistingResume = async (resumeId) => {
-    const resume = dummyResumeData.find((resume) => resume._id === resumeId);
+    const resume = dummyResumeData.find(resume => resume._id === resumeId);
     if (resume) {
       setResumeData(resume);
-      document.title = resume.title + " - Resume Builder";
+      document.title = resume.title
     }
   };
 
@@ -74,7 +76,7 @@ function ResumeBuilder() {
               <hr
                 className="absolute top-0 left-0 h-1 bg-gradient-to-r from-green-500 to-green-600 border-none transition-all duration-2000"
                 style={{
-                  width: "${activeSectionIndex *100/(sections.length-1)%",
+                  width: `${activeSectionIndex * 100 / (sections.length - 1)}%`,
                 }}
               />
               {/* Section Navigation */}
@@ -119,7 +121,13 @@ function ResumeBuilder() {
             </div>
           </div>
           {/* Right Panel - Resume Preview */}
-          <div></div>
+          <div className="lg:col-7 max-lg:mt-6">
+                <div>
+                  {/* ------------buttons------------ */}
+                </div>
+                  {/* ------------preview------------ */}
+                  <ResumePreview data={resumeData} template={resumeData.template} accentColor={resumeData.accent_color}/>
+          </div>
         </div>
       </div>
     </div>
