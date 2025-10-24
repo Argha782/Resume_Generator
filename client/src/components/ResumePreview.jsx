@@ -22,7 +22,7 @@ function ResumePreview({ data, template, accentColor, classes = "" }) {
             <div id="resume-preview" className={"border border-gray-200 print:shadow-none print:boreder-none" + classes}>
             {renderTemplate()}
             </div>
-            <style jsx='true'>
+            <style jsx>
             {`
                 @page{
                     size: letter;
