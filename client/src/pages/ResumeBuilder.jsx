@@ -81,7 +81,7 @@ function ResumeBuilder() {
 
 const handleShare = () => {
   const frontendUrl = window.location.href.split('/app')[0];
-  const resumeUrl = `${frontendUrl}/resume/${resumeData._id}`;
+  const resumeUrl = `${frontendUrl}/view/${resumeData._id}`;
   if (navigator.share) {
     navigator.share({
       title: 'My Resume',
