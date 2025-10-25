@@ -1,0 +1,29 @@
+import express from 'express';
+// import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import connectDB from './configs/db.js';
+import userRouter from './routes/user.routes.js';
+import resumeRouter from './routes/resume.routes.js';
+// import resumeRoutes from './routes/resumeRoutes.js';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Database Connection
+await connectDB();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+app.get('/', (req, res) => {
+  res.send('Resume Builder API is running...');
+});
+app.use('/api/users', userRouter);
+app.use('/api/resumes', resumeRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
