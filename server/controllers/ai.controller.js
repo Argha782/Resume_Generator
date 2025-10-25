@@ -1,5 +1,5 @@
 import Resume from "../models/resume.model.js";
-import { ai } from "../configs/ai.js";
+import  ai  from "../configs/ai.js";
 
 // controller for enhancing a resume's professional summary
 // POST: /api/ai/enhance-pro-summary
