@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Dashboard from "../../pages/Dashboard";
 
 const Hero = () => {
+
+  const { user } = useSelector(state=> state.auth)
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -44,11 +48,14 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="hidden md:block space-x-3">
-          <Link to='/app?state=register' className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-md">
+          <Link to='/app?state=register' className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-md" hidden={user}>
             Get started
           </Link>
-          <Link to='/app?state=login' className="hover:bg-slate-100 transition px-6 py-2 border border-indigo-600 rounded-md">
+          <Link to='/app?state=login' className="hover:bg-slate-100 transition px-6 py-2 border border-indigo-600 rounded-md" hidden={user}>
             Login
+          </Link>
+          <Link to='/app' className="hidden md:block px-8 py-2 bg-green-500 hover:bg-gree-700 active:scale-95 transition-all rounded-full text-white" hidden={!user}>
+            Dashboard
           </Link>
         </div>
 
