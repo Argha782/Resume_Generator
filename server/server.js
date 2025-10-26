@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config({ path: "./.env" });
-console.log("Loaded GEMINI_API_KEY:", process.env.GEMINI_API_KEY ? "✅ Loaded" : "❌ Missing");
-
+import dotenv from 'dotenv';
 import express from 'express';
 // import mongoose from 'mongoose';
 import cors from 'cors';
@@ -9,7 +6,9 @@ import connectDB from './configs/db.js';
 import userRouter from './routes/user.routes.js';
 import resumeRouter from './routes/resume.routes.js';
 import aiRouter from './routes/ai.routes.js';
+// import resumeRoutes from './routes/resumeRoutes.js';
 
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

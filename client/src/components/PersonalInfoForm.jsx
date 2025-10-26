@@ -2,7 +2,7 @@ import { BriefcaseBusiness, Github, Globe, Linkedin, Mail, MapPin, Phone, User }
 import React from "react";
 
 function PersonalInfoForm({
-  data,
+  data = {},
   onChange,
   removeBackground,
   setRemoveBackground,

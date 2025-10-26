@@ -12,8 +12,15 @@ function Preview() {
     const [resumeData, setResumeData] = useState(null);
 
     const loadResume=async()=>{
-        setResumeData(dummyResumeData.find(resume=>resume._id===resumeId || null));
-        setIsLoading(false);
+       try {
+        const { data } = await api.get("/api/resumes/public/", resumeId);
+        serResumeData(data.resume)
+       } catch (error) {
+        console.log(error.message);
+       }
+       finally{
+        setIsLoading(false)
+       }
     }
 
     useEffect(()=>{

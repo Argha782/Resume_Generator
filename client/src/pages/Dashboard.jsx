@@ -1,5 +1,6 @@
 import {
   FilePenIcon,
+  LoaderCircleIcon,
   PencilIcon,
   PlusIcon,
   TrashIcon,
@@ -69,7 +70,16 @@ function Dashboard() {
     setIsLoading(false)
   };
   const editTitle = async (event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
+      const {data}= await api.put(`/api/resumes/update/`, {resumeId: editResumeId,resumeData: {title}})
+      setAllResumes(allResumes.map(resume => resume._id !== editResumeId ? {...resume, title}: resume));
+      setTitle('')
+      setEditResumeId('')
+      toast.success(data.message)
+    } catch (error) {
+      toast.error("Unable to edit resume title",error?.response?.data?.message || error.message)
+    }
   };
   const deleteResume = async (resumeId) => {
     const confirm = window.confirm(
@@ -224,6 +234,7 @@ function Dashboard() {
                     ) : (
                       <>
                         <UploadCloudIcon className="size-14 stroke-1" />
+                        <p>Upload resume</p>
                       </>
                     )}
                   </div>
@@ -236,8 +247,9 @@ function Dashboard() {
                   onChange={(e) => setResume(e.target.files[0])}
                 />
               </div>
-              <button className="w-full py-2 mb-4 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
-                Upload Resume
+              <button disabled={isLoading} className="flex items-center justify-center gap-2 w-full py-2 mb-4 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+                {isLoading && <LoaderCircleIcon className="animate-spin size-4 text-white"/>}
+                {isLoading ? 'Uploading...' : 'Upload Resume'}
               </button>
               <XIcon
                 className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"
