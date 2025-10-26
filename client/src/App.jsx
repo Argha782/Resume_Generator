@@ -8,7 +8,7 @@ import Login from './pages/Login'
 import ResumeBuilder from './pages/ResumeBuilder'
 import { useDispatch } from 'react-redux'
 import api from './configs/api'
-import { setLoading } from './app/features/authSlice'
+import { setLoading, login } from './app/features/authSlice'
 import { Toaster } from 'react-hot-toast'
 
 function App() {

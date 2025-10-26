@@ -27,6 +27,7 @@ export const createResume = async (req, res) => {
 export const deleteResume = async (req, res) => {
   try {
     const userID = req.userID;
+    // const { resumeId } = req.body;
     const { resumeId } = req.params;
 
     await Resume.findOneAndDelete({
@@ -44,7 +45,8 @@ export const deleteResume = async (req, res) => {
 export const getResumeById = async (req, res) => {
   try {
     const userID = req.userID;
-    const { resumeId } = req.body;
+    // const { resumeId } = req.body;
+    const { resumeId } = req.params;
 
     const resume = await Resume.findOne({
       _id: resumeId,
@@ -67,7 +69,8 @@ export const getResumeById = async (req, res) => {
 // GET: /api/resumes/public
 export const getPublicResumeById = async (req, res) => {
   try {
-    const { resumeId } = req.body;
+    // const { resumeId } = req.body;
+    const { resumeId } = req.params;
 
     const resume = await Resume.findOne({
       public: true,
