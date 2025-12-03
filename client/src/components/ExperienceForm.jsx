@@ -1,5 +1,8 @@
 import { Briefcase, Loader2, Plus, Sparkles, Trash2 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import api from "../configs/api";
 
 function ExperienceForm({ data, onChange }) {
   const { token } = useSelector((state) => state.auth);
