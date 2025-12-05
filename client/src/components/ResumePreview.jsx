@@ -2,7 +2,7 @@ import React from 'react'
 import ClassicTemplate from '../assets/templates/ClassicTemplate'
 import ModernTemplate from '../assets/templates/ModernTemplate'
 import MinimalTemplate from '../assets/templates/MinimalTemplate'
-import MinimalImageTemplate from '../assets/templates/Minimalimagetemplate'
+import MinimalImageTemplate from '../assets/templates/MinimalImageTemplate'
 
 function ResumePreview({ data, template, accentColor, classes = "" }) {
     const renderTemplate = () => {

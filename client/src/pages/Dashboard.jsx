@@ -4,7 +4,6 @@ import {
   PencilIcon,
   PlusIcon,
   TrashIcon,
-  UploadCloud,
   UploadCloudIcon,
   XIcon,
 } from "lucide-react";
@@ -72,7 +71,7 @@ function Dashboard() {
   const editTitle = async (event) => {
     try {
       event.preventDefault();
-      const {data}= await api.put(`/api/resumes/update/`, {resumeId: editResumeId,resumeData: {title}})
+      const {data}= await api.put(`/api/resumes/update/${editResumeId}`, {resumeId: editResumeId,resumeData: {title}})
       setAllResumes(allResumes.map(resume => resume._id !== editResumeId ? {...resume, title}: resume));
       setTitle('')
       setEditResumeId('')

@@ -11,7 +11,7 @@ import aiRouter from './routes/ai.routes.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Database Connection
 await connectDB();
@@ -21,6 +21,9 @@ app.use(express.json());
 app.use(cors());
 app.get('/', (req, res) => {
   res.send('Resume Builder API is running...');
+});
+app.get('/health', (req, res) => {
+  res.send('Everything is fine :) ...');
 });
 app.use('/api/users', userRouter);
 app.use('/api/resumes', resumeRouter);

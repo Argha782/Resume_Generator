@@ -23,7 +23,7 @@ import ProfessionalSummaryForm from "../components/ProfessionalSummaryForm";
 import ExperienceForm from "../components/ExperienceForm";
 import EducationForm from "../components/EducationForm";
 import ProjectForm from "../components/ProjectForm";
-import SkillsForm from "../components/SkillsFOrm";
+import SkillsForm from "../components/SkillsForm";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import api from "../configs/api";
@@ -199,7 +199,7 @@ function ResumeBuilder() {
         formData.append("image", img);
       }
 
-      const res = await api.put("/api/resumes/update", formData, {
+      const res = await api.put(`/api/resumes/update/${resumeId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -231,7 +231,7 @@ function ResumeBuilder() {
       if (resumeId) formData.append("resumeId", resumeId);
       formData.append("resumeData", JSON.stringify(minimalPayload));
 
-      const res = await api.put("/api/resumes/update", formData, {
+      const res = await api.put(`/api/resumes/update/${resumeId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           ...(token ? { Authorization: `Bearer ${token}` } : {}),

@@ -1,0 +1,21 @@
+services:
+  client:
+    build: ./client
+    ports:
+      - "5173:5173"
+    networks:
+      - rg
+    # depends_on:
+    #   - server
+  
+  server:
+    build: ./server
+    ports:
+      - "5000:3000"
+    networks:
+      - rg
+networks:
+  rg:
+    driver: bridge
+
+    
