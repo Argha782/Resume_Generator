@@ -7,8 +7,8 @@ export default defineConfig({
   // plugins: [react(),tailwindcss()],
   plugins: [react()],
   server: {
-    host: true,       // true to listen on all addresses, false to listen on localhost only
-    // port: 5173,      // specify the port number
+    host: '0.0.0.0',      // true to listen on all addresses, false to listen on localhost only
+    port: 5173       // specify the port number
     // strictPort: false, // if true, exit if the specified port is already in use
   },
 })
